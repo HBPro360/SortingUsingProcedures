@@ -14,6 +14,7 @@ namespace SortingUsingProcedures
         {
             
             int[] nums = new int[10];
+            Console.Write("\n*****Random Number Generating and Sorting*****\n\n");
             BuildRandoms(nums);
             Label();
             Print(nums);
@@ -24,9 +25,10 @@ namespace SortingUsingProcedures
         }
         static void Label()
         {
+            //Labels the list section according to whether or not the list has been sorted
             if (sorted == false)
             {
-                Console.WriteLine("Not Sorted:\n");
+                Console.WriteLine("\nNot Sorted:\n");
             }
             else
             {
@@ -57,10 +59,11 @@ namespace SortingUsingProcedures
                 {
                     if (ar[i] > ar[i + 1])
                     {
-                        //put nums[1] into a temporary spot
-                        int temp = ar[i];
-                        ar[i] = ar[i + 1];
-                        ar[i + 1] = temp;
+                        //put "ar[1]" into a temporary spot
+                        //int temp = ar[i];
+                        //ar[i] = ar[i + 1];
+                        //ar[i + 1] = temp;
+                        Swap<int>(ref ar[i], ref ar[i + 1]);
                         swapped = true;
                         sorted = true;
                     }
@@ -73,7 +76,14 @@ namespace SortingUsingProcedures
             {
                 Console.WriteLine(i.ToString() + ". " + ar[i]);
             }
-          
+        }
+        //generic method to swap any type that is passed through it
+        static void Swap<T>(ref T val1, ref T val2)
+        {
+            T temp;
+            temp = val1;
+            val1 = val2;
+            val2 = temp;
         }
     }
 }
